@@ -57,12 +57,12 @@
 		
 	<div class="fh5co-loader"></div>
 	
-	<div id="page">
+	<id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Wedding<strong>.</strong></a></div>
+					<div id="fh5co-logo"><a href="index.html"><img style="width: 100px; height: 100px;" src="/images/N & N-white.png"><strong>.</strong></a></div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
@@ -93,17 +93,21 @@
 			
 		</div>
 	</nav>
+	<br>
 
-	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/home-page-phone-banner.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Joefrey &amp; Sheila</h1>
+							<h1>Navish &amp; Nishita</h1>
 							<h2>We Are Getting Married</h2>
 							<div class="simply-countdown simply-countdown-one"></div>
+							<br/>
+							<br/>
+							<br/>
 							<p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
 						</div>
 					</div>
@@ -117,7 +121,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2>Hello!</h2>
-					<h3>November 28th, 2016 New York, USA</h3>
+					<h3>December 2nd, 2024 Rathambore, Rajasthan</h3>
 					<p>We invited you to celebrate our wedding</p>
 				</div>
 			</div>
@@ -127,8 +131,10 @@
 						<img src="images/groom.jpg" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-groom">
-						<h3>Joefrey Mahusay</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+						<h3>Navish Jain</h3>
+						<!-- <h5>Son of: Vaishali Sanjeev Jain</h5> -->
+						<p>Son of: Vaishali Sanjeev Jain</p>
+						<!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p> -->
 					</div>
 				</div>
 				<p class="heart text-center"><i class="icon-heart2"></i></p>
@@ -137,8 +143,10 @@
 						<img src="images/bride.jpg" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-bride">
-						<h3>Sheila Mahusay</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+						<h3>Nishita Shanklesha</h3>
+						<!-- <h5>Daughter of: Gunvanti Kamlesh Shanklesha</h5> -->
+						<p>Daughter of: Gunvanti Kamlesh Shanklesha</p>
+						<!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p> -->
 					</div>
 				</div>
 			</div>
@@ -596,7 +604,7 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
-	<script>
+	<!-- <script>
     var d = new Date(new Date().getTime() + 200 * 120 * 120 * 2000);
 
     // default example
@@ -611,6 +619,41 @@
         year: d.getFullYear(),
         month: d.getMonth() + 1,
         day: d.getDate(),
+        enableUtc: false
+    });
+</script> -->
+<script>
+    // Get the current date and time
+    var currentDate = new Date();
+
+    // Calculate the target date by adding 64 days, 5 hours, and 10 minutes
+    var daysToAdd = 64;
+    var hoursToAdd = 5;
+    var minutesToAdd = 10;
+
+    var targetDate = new Date(currentDate);
+    targetDate.setDate(targetDate.getDate() + daysToAdd);
+    targetDate.setHours(targetDate.getHours() + hoursToAdd);
+    targetDate.setMinutes(targetDate.getMinutes() + minutesToAdd);
+
+    // Initialize the countdown
+    simplyCountdown('.simply-countdown-one', {
+        year: targetDate.getFullYear(),
+        month: targetDate.getMonth() + 1,
+        day: targetDate.getDate(),
+        hours: targetDate.getHours(),
+        minutes: targetDate.getMinutes(),
+        seconds: targetDate.getSeconds()
+    });
+
+    // jQuery example
+    $('#simply-countdown-losange').simplyCountdown({
+        year: targetDate.getFullYear(),
+        month: targetDate.getMonth() + 1,
+        day: targetDate.getDate(),
+        hours: targetDate.getHours(),
+        minutes: targetDate.getMinutes(),
+        seconds: targetDate.getSeconds(),
         enableUtc: false
     });
 </script>
