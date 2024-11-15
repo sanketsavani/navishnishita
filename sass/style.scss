@@ -1808,3 +1808,8 @@ form {
 		opacity: 0;
 	}
 }
+@media (max-width: 375px) {
+	.simply-countdown {
+		zoom: 80%;
+	}
+}
