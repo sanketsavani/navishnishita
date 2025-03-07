@@ -615,6 +615,7 @@
 
 	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
 	<script src="js/simplyCountdown.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
@@ -637,59 +638,76 @@
     });
 </script> -->
 <script>
-    // Get the current date and time (October 6, 2024, 7:50 PM)
-    var currentDate = new Date('October 6, 2024 19:50:00');
-
-    // Set the target date and time (December 2, 2024, 6:15 PM)
+												// Get the target date and time (December 2, 2024, 6:15 PM)
     var targetDate = new Date('December 2, 2024 18:15:00');
 
-    // Function to calculate the countdown
-    function calculateCountdown() {
-        var now = new Date(); // Current date and time
-        var timeDifference = targetDate - now; // Time difference in milliseconds
+												function fireConfetti() {
+													var count = 200;
+													var defaults = {
+														origin: { y: 0.7 }
+													};
 
-        // Calculate the number of days, hours, minutes, and seconds
-        var daysToAdd = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        var hoursToAdd = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutesToAdd = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        var secondsToAdd = Math.floor((timeDifference % (1000 * 60)) / 1000);
+												function fire(particleRatio, opts) {
+													confetti({
+														...defaults,
+														...opts,
+														particleCount: Math.floor(count * particleRatio)
+													});
+												}
 
-        // Update the countdown display
-        document.getElementById('days').textContent = daysToAdd;
-        document.getElementById('hours').textContent = hoursToAdd;
-        document.getElementById('minutes').textContent = minutesToAdd;
-        document.getElementById('seconds').textContent = secondsToAdd;
+												fire(0.25, {
+													spread: 26,
+													startVelocity: 55,
+												});
+												fire(0.2, {
+													spread: 60,
+												});
+												fire(0.35, {
+													spread: 100,
+													decay: 0.91,
+													scalar: 0.8
+												});
+												fire(0.1, {
+													spread: 120,
+													startVelocity: 25,
+													decay: 0.92,
+													scalar: 1.2
+												});
+												fire(0.1, {
+													spread: 120,
+													startVelocity: 45,
+												});
+											}
 
-        // If countdown is finished, display a message
-        if (timeDifference < 0) {
-            clearInterval(countdownInterval);
-            document.getElementById('countdown').innerHTML = "Countdown Ended!";
-        }
-    }
-
-    // Call the calculateCountdown function every second
-    var countdownInterval = setInterval(calculateCountdown, 1000);
-
-    // Initialize the countdown
-    simplyCountdown('.simply-countdown-one', {
-        year: targetDate.getFullYear(),
-        month: targetDate.getMonth() + 1,
-        day: targetDate.getDate(),
-        hours: targetDate.getHours(),
-        minutes: targetDate.getMinutes(),
-        seconds: targetDate.getSeconds()
-    });
-
-    // jQuery example
-    $('#simply-countdown-losange').simplyCountdown({
-        year: targetDate.getFullYear(),
-        month: targetDate.getMonth() + 1,
-        day: targetDate.getDate(),
-        hours: targetDate.getHours(),
-        minutes: targetDate.getMinutes(),
-        seconds: targetDate.getSeconds(),
-        enableUtc: false
-    });
+												// Initialize the countdown
+												simplyCountdown('.simply-countdown-one', {
+													year: targetDate.getFullYear(),
+													month: targetDate.getMonth() + 1,
+													day: targetDate.getDate(),
+													hours: targetDate.getHours(),
+													minutes: targetDate.getMinutes(),
+												seconds: targetDate.getSeconds(),
+												words: {
+													days: 'day',
+													hours: 'hour',
+													minutes: 'minute',
+													seconds: 'second',
+													pluralLetter: 's'
+												},
+												plural: true,
+												inline: false,
+												enableUtc: false,
+												onEnd: function () {
+													// This will fire when countdown reaches zero
+													fireConfetti();
+												},
+												refresh: 1000,
+												inlineClass: 'simply-countdown-inline',
+												sectionClass: 'simply-section',
+												amountClass: 'simply-amount',
+												wordClass: 'simply-word',
+												zeroPad: false
+											});
 </script>
 <!-- 
 <div id="countdown">
